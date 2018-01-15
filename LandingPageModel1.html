@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://fb.me/react-15.2.1.js"></script>
+        <script src="https://fb.me/react-dom-15.2.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+        <!-- This is for the scroll fade effect-->
+        <script>
+            
+           $(document).ready(function() {
+    
+                /* Every time the window is scrolled ... */
+                $(window).scroll( function(){
+
+                    /* Check the location of each desired element */
+                    $('.hideme').each( function(i){
+
+                        var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+                        var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+                        /* If the object is completely visible in the window, fade it it */
+                        if( bottom_of_window > bottom_of_object ){
+
+                            $(this).animate({'opacity':'1'},500);
+
+                        }
+
+                    }); 
+
+                });
+
+            });
+            
+        </script>
+        
+        <style>
+            
+            *{
+                font-family: "Open Sans", Helvetica, Arial, sans-serif;
+            }
+            
+            body, html{
+                margin:0;
+                padding:0;
+                background-color: antiquewhite;
+                
+            }
+            
+            .header {
+              position: fixed;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100px;
+              z-index: 20;
+              background-color: blanchedalmond;
+              -webkit-box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
+              -moz-box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
+              box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
+            }
+
+            .header__content-text {
+                text-align: left;
+                padding: 15px 20px;
+            }
+            
+            .page__content-container {
+                align-content:center;
+                margin: auto;
+                width: 100%;
+                padding: 0px;
+            }
+            
+            /* This is the blinking text */
+            
+            #intropart {
+                position: relative;
+                padding-top: 350px;
+                padding-bottom: 350px;
+                width: 100%;
+                /*padding-right: 0%;
+                padding-left: 0%;*/
+            }
+            #text1 {
+                text-align: center; 
+                font-size: 60px;
+                margin: 10px 0 0 130px;
+                white-space: nowrap;
+                overflow: hidden;
+                width: 16em;
+                animation: type 4s steps(60, end); 
+            }
+            
+            /* Animantion Start*/
+            
+            #text1 :nth-child(2){
+                animation: type2 8s steps(60, end);
+            }
+            
+            span.blinkie {
+                animation: blink 1s infinite;
+            
+            }
+            
+            @keyframes type{ 
+              from { width: 0; } 
+            } 
+
+            @keyframes type2{
+              0%{width: 0;}
+              50%{width: 0;}
+              100%{ width: 100; } 
+            } 
+
+            @keyframes blink{
+              to{opacity: .0;}
+            }
+            
+            /* Animation End */
+            
+            /* main div 1*/
+            #firstpart {
+                position: relative;
+                width: 100%;
+                background-color: lightsalmon;
+                color: antiquewhite;
+                padding-top: 200px;
+                padding-bottom: 200px;
+                padding-right: 0;
+                padding-left: 0;
+            }
+            
+            #text2 {
+                text-align: center; 
+                font-size: 30px;
+                padding-right: 50px;
+                padding-left: 50px;
+                    
+            }
+            
+            #text2a {
+                padding-top: 50px;
+                font-size: 25px;
+            }
+            
+            /* main div 2*/
+            #secondpart {
+                position: relative;
+                width: 100%;
+                color: white;
+                z-index: 10;
+                background-color: mediumpurple;
+                padding-top: 100px;
+                padding-bottom: 125px;
+                padding-right: 0%; /* The shadow thing didnt work out
+                might have to forget about it.*/
+                padding-left: 0%;
+                -webkit-box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
+                -moz-box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
+                box-shadow: 0 7px 8px rgba(0, 0, 0, 0.12);
+                
+                
+            }
+            
+            #text3 {
+                text-align: center;
+                font-size: 35px;
+            }
+            
+            #withinsecondpart {
+                /* This is for div around each text para in 2ndpart */
+                padding-top: 50px; 
+                padding-right: 50px;
+                padding-left: 50px;
+                text-align: center;
+            }
+            
+            #text4a {
+                /* I dont think I need it*/
+            }
+            
+            #text4b {
+                /* I dont think I need it*/
+                
+            }
+            
+            /* main div 3*/
+            #thirdpart {
+                position: relative;
+                width: 100%;
+                color: white;
+                z-index: 15;
+                background-color: paleturquoise;
+                padding-right: 0%;
+                padding-left: 0%;
+            }
+            
+            @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600);
+            
+            /*Outermost contact box*/
+            #boxspace {
+                margin:0;
+                padding:100px;
+                box-sizing:border-box;
+                -webkit-box-sizing:border-box;
+                -moz-box-sizing:border-box;
+                -webkit-font-smoothing:antialiased;
+                -moz-font-smoothing:antialiased;
+                -o-font-smoothing:antialiased;
+                font-smoothing:antialiased;
+                text-rendering:optimizeLegibility;
+            }
+
+            #boxspace {
+                font-family:"Open Sans", Helvetica, Arial, sans-serif;
+                font-weight:300;
+                font-size: 12px;
+                line-height:30px;
+                color:#777;
+            }
+            
+            /*This is for the headings within the box*/
+            .container {
+                text-align: center;
+                max-width:600px;
+                width:100%;
+                margin:0 auto;
+                position:relative;
+            }
+
+            #contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea, #contact button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+
+            /*#contact is for the entire box*/
+            #contact {
+                background:#F9F9F9;
+                padding:50px;
+                margin:50px 0;
+            }
+            
+            /*This is for 'Quick Contact'*/
+            #contact h3 {
+                color: rebeccapurple;
+                display: block;
+                font-size: 30px;
+                font-weight: 400;
+            }
+
+            /*This is for the subtitle words under 'Quick Contact'*/
+            #contact h4 {
+                margin:5px 0 15px;
+                display:block;
+                font-size:13px;
+            }
+            
+            /*'fieldset' is each text box*/
+            fieldset {
+                border: medium none !important;
+                margin: 0 0 10px;
+                min-width: 100%;
+                padding: 0;
+                width: 100%;
+            }
+            
+            /*This is for each text box*/
+            #contact 
+            input[type="text"], 
+            #contact 
+            input[type="email"], 
+            #contact 
+            input[type="tel"], 
+            #contact 
+            input[type="url"], 
+            #contact textarea {
+                width:100%;
+                border:1px solid #CCC;
+                background:#FFF;
+                margin:0 0 5px;
+                padding:10px;
+            }
+            
+            /*This is for the color of the outline of each text box as you hover over each*/
+            #contact input[type="text"]:hover, #contact input[type="email"]:hover, #contact input[type="tel"]:hover, #contact input[type="url"]:hover, #contact textarea:hover {
+                -webkit-transition:border-color 0.3s ease-in-out;
+                -moz-transition:border-color 0.3s ease-in-out;
+                transition:border-color 0.3s ease-in-out;
+                border:1px solid #AAA;
+            }
+
+            
+            /*This is for the message box*/
+            #contact textarea {
+                height:100px;
+                max-width:100%;
+                resize:none;
+            }
+            
+            /*This is for the Submit button*/
+            #contact button[type="submit"] {
+                cursor:pointer;
+                width:100%;
+                border:none;
+                background:#0CF;
+                color:#FFF;
+                margin:0 0 5px;
+                padding:10px;
+                font-size:15px;
+            }
+            
+            /*This is for the Submit button when hovered over*/
+            #contact button[type="submit"]:hover {
+                background:#09C;
+                -webkit-transition:background 0.3s ease-in-out;
+                -moz-transition:background 0.3s ease-in-out;
+                transition:background-color 0.3s ease-in-out;
+            }
+
+            /*This is for the button after its clicked*/
+            #contact button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+
+            /*This is for if the mouse clicks on the text box and moves away, they color of the border of the testbox*/
+            #contact input:focus, #contact textarea:focus {
+                outline:0;
+                border:1px solid #999;
+            }
+            ::-webkit-input-placeholder {
+             color:#888; /*color of idle words*/
+            }
+            :-moz-placeholder {
+             color:#888;
+            }
+            ::-moz-placeholder {
+             color:#888;
+            }
+            :-ms-input-placeholder {
+             color:#888;
+            }
+
+            /*.hideme{
+                opacity:0;
+            }*/
+        
+        </style>
+        <title> HoliSym </title>
+    </head>
+    
+    <body>
+        <!-- The Header -->
+        <div class="header">
+            
+          <h1 class="header__content-text">
+            <img src="HoliSym/HoliSym%20Logo.png">
+          </h1>
+            
+        </div>
+        
+        <!-- Under the Header -->
+        <div class="page__content-container">
+            
+            
+            <div id="intropart">
+                
+                    <h2 id="text1" autofocus>We Are Democratizing Investing.
+                        <span class="blinkie">|</span>
+                    </h2>
+                
+            </div>
+            
+            
+            
+            
+            
+            <div class="hideme" id="firstpart">
+                <center>
+                    <h2 id="text2">
+                        We interpret the overwhelming graphs & numbers into intuitive, easy-to-read information <u>you</u> can invest smarter.
+                    </h2>
+                    <div>
+                        <h2 id="text2a">
+                            On any device. On any budget.
+                        </h2>
+                    
+                    </div>
+                </center>
+            </div>
+            
+            
+            
+            
+            
+            
+            <div class="hideme" id="secondpart">
+                
+                    <h2 id="text3">
+                        OUR VISION
+                    </h2>
+                        <div id="withinsecondpart"> <!-- for measurements -->
+                            <p id="text4a"> <!-- for decor -->
+                                We seek to enable everyone around the world to comfortably participate in financial markets, establishing social-economic responsibility to build a stronger and more transparent global economy.
+
+                            </p>
+                        </div>
+                    
+                        <div id="withinsecondpart">
+                            <p id="text4b">
+                                We believe in challenging the status quo.  We believe in the power of the current social-demographic shift to reshape the global economy, and we are here to facilitate this revolution.  We challenge the status quo by:
+
+                            </p>
+                        </div>
+                
+            </div>
+            
+            
+            
+            
+            
+            <div class="hideme" id="thirdpart">
+                <div id="boxspace">
+                <div class="container">  
+                      <form id="contact" action="" method="post">
+                        <h3>Quick Contact</h3>
+                        <h4>Contact us today, and get reply with in 24 hours!</h4>
+                        <fieldset>
+                          <input placeholder="Your name" type="text" tabindex="1" required>
+                        </fieldset>
+                        <fieldset>
+                          <input placeholder="Your Email Address" type="email" tabindex="2" required>
+                        </fieldset>
+                        <fieldset>
+                          <input placeholder="Your Phone Number" type="tel" tabindex="3" required>
+                        </fieldset>
+                        <fieldset>
+                          <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea>
+                        </fieldset>
+                        <fieldset>
+                          <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                        </fieldset>
+                      </form>
+ 
+  
+                </div>
+                </div>
+                
+            </div>
+            
+            
+            
+            
+          
+        </div>
+        
+            
+        
+        
+        
+        
+        
+        
+    </body>
+</html>
